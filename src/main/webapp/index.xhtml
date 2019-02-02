@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <title>boring board</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+          crossorigin="anonymous"/>
+    <meta charset="utf-8"/>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+</h:head>
+<h:body>
+    <div class="container-fluid">
+        <div class="row" style="background-color: rgb(255,87,99); color: #ffffff">
+            <div class="col-md-12"><br/><br/></div>
+            <div class="col-md-5"></div>
+            <div class="col-md-2">
+                <h1>boring board</h1>
+            </div>
+            <div class="col-md-5"></div>
+            <div class="col-md-12"><br/><br/><br/><br/></div>
+        </div>
+        <br/>
+        <div class="row" style="color: rgb(255,87,99); ">
+            <div class="col-md-1"></div>
+            <div class="col-md">
+                <div class="border border-danger rounded p-3" style="border-color: rgb(255,87,99);">
+                    <h4 class="text-center">Random Number Facts</h4>
+                    <h:form>
+                        <div class="row">
+                            <div class="form-group col">
+                                <h:inputText class="form-control" id="number" placeholder="5"
+                                             value="#{viewController.number}"/>
+                            </div>
+                            <div class="form-group col">
+                                <h:selectOneMenu class="form-control" id="cat" value="#{viewController.category}">
+                                    <f:selectItem itemValue="0" itemLabel="trivia"/>
+                                    <f:selectItem itemValue="1" itemLabel="math"/>
+                                    <f:selectItem itemValue="3" itemLabel="year"/>
+                                </h:selectOneMenu>
+                            </div>
+                            <div class="col">
+                                <h:commandButton type="submit" class="btn btn-primary"
+                                                 action="#{viewController.searchNumber()}" value="Fact time"/>
+                            </div>
+                        </div>
+                    </h:form>
+                    <div>
+                        <blockquote class="blockquote text-center">
+                            <p class="mb-0">#{viewController.numberFact}</p>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md">
+                <div class="border border-danger rounded p-3" style="border-color: rgb(255,87,99);">
+                    <h4 class="text-center">ISS Possition</h4>
+                    <div>
+                        <blockquote class="blockquote text-center">
+                            <p class="mb-0">Longitude: #{viewController.ISSPositionLat}</p>
+                            <p class="mb-0">Latitude: #{viewController.ISSPositionLong}</p>
+                            <a href="https://www.google.com/maps/preview/@#{viewController.ISSPositionLat},#{viewController.ISSPositionLong},7z"
+                               target="_blank">Google Maps</a>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <br/>
+        <div class="row" style="color: rgb(255,87,99); ">
+            <div class="col-md-4"></div>
+            <div class="col-md">
+                <div class="border border-danger rounded p-3" style="border-color: rgb(255,87,99);">
+                    <h2 class="display-2 mb-1">Hi and Welcome</h2>
+                    <blockquote class="blockquote">
+                        <p class="mb-1">to the boring board here you can do funny things when you're bored.</p>
+                    </blockquote>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <br/>
+        <div class="row" style="color: rgb(255,87,99); ">
+            <div class="col-md-8"></div>
+            <div class="col-md">
+                <div class="border border-danger rounded p-3" style="border-color: rgb(255,87,99);">
+                    <h4 class="text-center">Random Chuck Norris Joke</h4>
+                    <blockquote class="blockquote text-center">
+                        <p class="mb-0">#{viewController.chuckNorrisJoke}</p>
+                        <h:form>
+                            <h:commandButton type="submit" class="btn btn-primary" action="#" value="another one!"/>
+                        </h:form>
+                    </blockquote>
+                </div>
+            </div>
+
+            <div class="col-md-1"></div>
+        </div>
+        <div class="row" style="color: rgb(255,87,99); ">
+            <div class="col-md-2"></div>
+            <div class="col-md">
+                <div class="border border-danger rounded p-3 text-center" style="border-color: rgb(255,87,99);">
+                    <h4>Meme Search</h4>
+                    <h:form>
+                        <div class="row">
+                            <div class="form-group col">
+                                <h:inputText class="form-control" placeholder="coding"
+                                             value="#{viewController.searchText}"/>
+                            </div>
+                            <div class="col">
+                                <h:commandButton type="submit" class="btn btn-primary"
+                                                 action="#{viewController.searchMeme()}" value="Meme time"/>
+                            </div>
+                        </div>
+                    </h:form>
+                    <img src="#{viewController.memeLink}" alt="meme" class="img-thumbnail border rounded"/>
+                </div>
+            </div>
+
+            <div class="col-md-8"></div>
+        </div>
+    </div>
+    <script type="text/javascript"
+            src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+            integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript"
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
+</h:body>
+</html>

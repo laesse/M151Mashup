@@ -6,7 +6,7 @@
     distribution for a full listing of individual contributors.
 
     Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
+    you may not log this file except in compliance with the License.
     You may obtain a copy of the License at
     http://www.apache.org/licenses/LICENSE-2.0
     Unless required by applicable law or agreed to in writing, software
@@ -24,7 +24,9 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>WildFly Quickstarts: boring</name>
-    <description>A starter Java EE 7 webapp project for use on JBoss WildFly / WildFly, generated from the jboss-javaee6-webapp archetype</description>
+    <description>A starter Java EE 7 webapp project for log on JBoss WildFly / WildFly, generated from the
+        jboss-javaee6-webapp archetype
+    </description>
 
     <url>http://wildfly.org</url>
     <licenses>
@@ -55,8 +57,8 @@
         <version.war.plugin>2.5</version.war.plugin>
 
         <!-- maven-compiler-plugin -->
-        <maven.compiler.target>1.7</maven.compiler.target>
-        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
     </properties>
 
 
@@ -64,8 +66,8 @@
         <dependencies>
             <!-- JBoss distributes a complete set of Java EE 7 APIs including a Bill
                 of Materials (BOM). A BOM specifies the versions of a "stack" (or a collection) 
-                of artifacts. We use this here so that we always get the correct versions 
-                of artifacts. Here we use the jboss-javaee-7.0-with-tools stack (you can
+                of artifacts. We log this here so that we always get the correct versions
+                of artifacts. Here we log the jboss-javaee-7.0-with-tools stack (you can
                 read this as the JBoss stack of the Java EE 7 APIs, with some extras tools
                 for your project, such as Arquillian for testing) and the jboss-javaee-7.0-with-hibernate
                 stack you can read this as the JBoss stack of the Java EE 7 APIs, with extras
@@ -92,7 +94,7 @@
         <!-- First declare the APIs we depend on and need for compilation. All 
             of them are provided by JBoss WildFly -->
 
-        <!-- Import the CDI API, we use provided scope as the API is included in 
+        <!-- Import the CDI API, we log provided scope as the API is included in
             JBoss WildFly -->
         <dependency>
             <groupId>javax.enterprise</groupId>
@@ -100,7 +102,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Import the Common Annotations API (JSR-250), we use provided scope 
+        <!-- Import the Common Annotations API (JSR-250), we log provided scope
             as the API is included in JBoss WildFly -->
         <dependency>
             <groupId>org.jboss.spec.javax.annotation</groupId>
@@ -108,7 +110,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Import the JAX-RS API, we use provided scope as the API is included 
+        <!-- Import the JAX-RS API, we log provided scope as the API is included
             in JBoss WildFly -->
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
@@ -116,7 +118,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Import the JPA API, we use provided scope as the API is included in 
+        <!-- Import the jpa API, we log provided scope as the API is included in
             JBoss WildFly -->
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
@@ -124,7 +126,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Import the EJB API, we use provided scope as the API is included in 
+        <!-- Import the EJB API, we log provided scope as the API is included in
             JBoss WildFly -->
         <dependency>
             <groupId>org.jboss.spec.javax.ejb</groupId>
@@ -147,7 +149,7 @@
             </exclusions>
         </dependency>
 
-        <!-- Import the JSF API, we use provided scope as the API is included in 
+        <!-- Import the JSF API, we log provided scope as the API is included in
             JBoss WildFly -->
         <dependency>
             <groupId>org.jboss.spec.javax.faces</groupId>
@@ -157,7 +159,7 @@
 
         <!-- Now we declare any tools needed -->
 
-        <!-- Annotation processor to generate the JPA 2.0 metamodel classes for 
+        <!-- Annotation processor to generate the jpa 2.0 metamodel classes for
             typesafe criteria queries -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -173,7 +175,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Needed for running tests (you may also use TestNG) -->
+        <!-- Needed for running tests (you may also log TestNG) -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -182,7 +184,7 @@
 
         <!-- Optional, but highly recommended -->
         <!-- Arquillian allows you to test enterprise code such as EJBs and Transactional(JTA) 
-            JPA from JUnit/TestNG -->
+            jpa from JUnit/TestNG -->
         <dependency>
             <groupId>org.jboss.arquillian.junit</groupId>
             <artifactId>arquillian-junit-container</artifactId>
@@ -217,7 +219,7 @@
                 </configuration>
             </plugin>
             <!-- The WildFly plugin deploys your war to a local WildFly container -->
-            <!-- To use, run: mvn package wildfly:deploy -->
+            <!-- To log, run: mvn package wildfly:deploy -->
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
@@ -248,60 +250,5 @@
                 </plugins>
             </build>
         </profile>
-
-        <profile>
-
-            <!-- An optional Arquillian testing profile that executes tests
-                in your WildFly instance -->
-            <!-- This profile will start a new WildFly instance, and execute the
-                test, shutting it down when done -->
-            <!-- Run with: mvn clean test -Parq-wildfly-managed -->
-            <id>arq-wildfly-managed</id>
-            <dependencies>
-                <dependency>
-                    <groupId>org.wildfly</groupId>
-                    <artifactId>wildfly-arquillian-container-managed</artifactId>
-                    <scope>test</scope>
-                </dependency>
-            </dependencies>
-        </profile>
-
-        <profile>
-            <!-- An optional Arquillian testing profile that executes tests
-                in a remote WildFly instance -->
-            <!-- Run with: mvn clean test -Parq-wildfly-remote -->
-            <id>arq-wildfly-remote</id>
-            <dependencies>
-                <dependency>
-                    <groupId>org.wildfly</groupId>
-                    <artifactId>wildfly-arquillian-container-remote</artifactId>
-                    <scope>test</scope>
-                </dependency>
-            </dependencies>
-        </profile>
-
-        <profile>
-            <!-- When built in OpenShift the 'openshift' profile will be used when 
-                invoking mvn. -->
-            <!-- Use this profile for any OpenShift specific customization your app 
-                will need. -->
-            <!-- By default that is to put the resulting archive into the 'deployments' 
-                folder. -->
-            <!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
-            <id>openshift</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-war-plugin</artifactId>
-                        <version>${version.war.plugin}</version>
-                        <configuration>
-                            <outputDirectory>deployments</outputDirectory>
-                            <warName>ROOT</warName>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
     </profiles>
 </project>

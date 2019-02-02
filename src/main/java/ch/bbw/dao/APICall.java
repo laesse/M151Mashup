@@ -1,7 +1,6 @@
 package ch.bbw.dao;
 
 import ch.bbw.model.APIResponse;
-import com.google.gson.Gson;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,7 +17,7 @@ public class APICall{
         this.urlString = urlString;
     }
 
-    public APIResponse callAPi() {
+    public APIResponse callApi() {
         APIResponse response = new APIResponse();
         try {
             URL url = new URL(this.urlString);
@@ -37,22 +36,26 @@ public class APICall{
 
 
                 String inputLine;
-                StringBuffer content = new StringBuffer();
+                String content = new String();
                 while ((inputLine = in.readLine()) != null) {
-                    content.append(inputLine + "\n");
+                    content += inputLine + "\n";
                 }
                 in.close();
                 api.disconnect();
                 response.setContent(content.toString());
-            } else {
-                //in = new BufferedReader(new InputStreamReader(api.getErrorStream()));
             }
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
         return response;
+    }
+
+    public APIResponse callApi(String urlExtensionString) {
+        String zwUrlString = urlString;
+        urlString += urlExtensionString;
+        APIResponse out = callApi();
+        urlString = zwUrlString;
+        return out;
     }
 
 }

@@ -1,13 +1,13 @@
 package ch.bbw.model;
 
-public class JuckNorrisModel {
+public class ChuckNorrisModel {
     private String category;
     private String icon_url;
     private String id;
     private String url;
     private String value;
 
-    public JuckNorrisModel(String category, String icon_url, String id, String url, String value) {
+    public ChuckNorrisModel(String category, String icon_url, String id, String url, String value) {
         this.category = category;
         this.icon_url = icon_url;
         this.id = id;
