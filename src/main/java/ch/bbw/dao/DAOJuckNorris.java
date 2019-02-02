@@ -4,19 +4,19 @@ import ch.bbw.model.APIResponse;
 import ch.bbw.model.JuckNorrisModel;
 import com.google.gson.Gson;
 
+import javax.ejb.Singleton;
+
+@Singleton
 public class DAOJuckNorris {
     private APICall apiCall;
 
     public DAOJuckNorris() {
         super();
-        this.apiCall = new APICall("https://api.chucknorris.io/jokes/random");
+        this.apiCall = new APICall("https://api.chucknorris.io/jokes/random/");
     }
 
     public void getJoke() {
-        APIResponse response = apiCall.callAPi();
-
-        System.out.println("Status Code: " + response.getStatusCode());
-        System.out.println("Content: " + response.getContent());
+        APIResponse response = apiCall.callApi();
 
         Gson gson = new Gson();
         JuckNorrisModel jnModel = gson.fromJson(response.getContent(), JuckNorrisModel.class);
