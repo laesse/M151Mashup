@@ -15,12 +15,10 @@ public class DAOMeme {
         this.apiCall = new APICall("http://version1.api.memegenerator.net//Instances_Search?pageIndex=0&pageSize=1&apiKey=de7e7c1d-e81a-4526-a15d-cc5e7894d5d5&q=");
     }
 
-    public void getMeme(String search) {
+    public Meme getMeme(String search) {
         APIResponse response = apiCall.callApi(search);
-
-
         Gson gson = new Gson();
         Meme meme = gson.fromJson(response.getContent(), Meme.class);
-        System.out.println(meme.getResult()[0].getInstanceImageUrl());
+        return meme;
     }
 }
